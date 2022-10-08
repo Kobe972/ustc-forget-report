@@ -556,10 +556,22 @@
     var date=new Date();
     var month=(date.getMonth()+1).toString();
     var day=date.getDate().toString();
+    var hour=date.getHours().toString();
+    var minute=date.getMinutes().toString();
+    var second=date.getSeconds().toString();
     if(month.length==1) month='0'+month;
     if(day.length==1) day='0'+day;
+    if(hour.length==1) hour='0'+hour;
+    if(minute.length==1) minute='0'+minute;
+    if(second.length==1) second='0'+second;
     document.getElementsByClassName("fakeDate")[0].innerHTML=date.getFullYear()+'-'+month+'-'+day
     +' 00:00:00~'+date.getFullYear()+'-'+month+'-'+day+' 23:59:59';
+    document.getElementById('date_Y').innerHTML=date.getFullYear();
+    document.getElementById('date_m').innerHTML=month;
+    document.getElementById('date_d').innerHTML=day;
+    document.getElementById('date_H').innerHTML=hour;
+    document.getElementById('date_i').innerHTML=minute;
+    document.getElementById('date_s').innerHTML=second();
     </script>
 </body>
 </html>
