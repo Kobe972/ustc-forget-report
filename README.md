@@ -5,7 +5,7 @@ What if you forget the fucking cross-campus report? **Ooooooops!** This reposito
 Sample website:http://home.ustc.edu.cn/~xuyichang/secret/report/
 
 ## Stargazers over time
-[![Stargazers over time](https://starchart.cc/Kobe972/ustc-forget-report.svg)](https://starchart.cc/Kobe972/USTC-ncov-AutoReport)
+[![Stargazers over time](https://starchart.cc/Kobe972/ustc-forget-report.svg)](https://starchart.cc/Kobe972/ustc-forget-report)
 
 You can reward me a cup of tea if this repository really helps you.
 
