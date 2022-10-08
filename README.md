@@ -4,3 +4,5 @@ What if you forget the fucking cross-campus report? **Ooooooops!** This reposito
 Sample website:http://home.ustc.edu.cn/~xuyichang/secret/report/
 
 You can give me a cup of tea if this repository really helps you.
+![](imgs/WeChat.jpg)
+![](imgs/Alipay.jpg)
