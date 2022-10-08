@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>中国科大健康打卡平台</title>
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/metisMenu.min.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/fonts/iconfont.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/main.css?t" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/bootoast.css" />
+    <link rel="shortcut icon" href="/2020/favicon.ico" />
+        <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/frontend.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/appointment.css" />
+    <style>
+        #table-box{ max-width: 800px; margin: 0 auto;}
+        .iconfont{ font-size: 14px;}
+        .icon-link{ display: block;  margin:2px 0 0 !important;}
+        @media  only screen and (min-width:1120px) {
+            #table-box{ padding: 0;}
+            .icon-link{ display: inline;  margin:2px 0 0 !important;}
+        }
+
+
+    </style>
+    <style>
+        .pagination{width: 100%;text-align: center;margin: 0;}
+        .pagination li{display: inline-block; height: 30px;line-height: 30px;margin: 0 2px;}
+        .pagination li a,.pagination li .more{min-width: 30px;height: 30px;border-radius: 3px;display: block; text-align: center;line-height: 20px;background: #fff;border: #ddd solid 1px;}
+        .pagination li input{width: 50px;height: 30px;border:#ddd solid 1px;border-radius: 3px;padding: 0 5px;margin: 0 5px;}
+        .pagination li a:hover,.pagination li a.act{background: #677bad;color: #fff;border: #677bad solid 1px;text-decoration: none;}
+        .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+            z-index: 3;
+            color: #fff;
+            cursor: default;
+            background-color: #677bad;
+            border-color: #677bad;
+            height: 30px;
+            border-radius: 3px;
+        }
+        .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+            z-index: 3;
+            color: #444;
+            cursor: default;
+            background-color: #f0f0f0;
+            border-color: #ccc;
+            height: 30px;
+            border-radius: 3px;
+        }
+        .footer{
+            background: #fff;
+            text-align: center;
+            padding: 10px 0;
+            color: #999;
+            border-top:  1px solid #f5f5f5;
+        }
+        .point{
+            width: 1.0rem;
+            height: 1.0rem;
+            border: 0.01rem solid #FD3509;
+            position: absolute;
+            left: 2.5rem;
+            top: 0.8rem;
+            background: #FD3509;
+            border-radius: 50%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="menu-hide">
+
+<div id="sidebar">
+    <div class="logo">
+        <a href="#"><img src="https://weixine.ustc.edu.cn/2020/html/img/logo.png"></a>
+        <a href="#" class="menu-close"><i class="fa fa-close"></i></a>
+    </div>
+    <nav class="sidebar-nav" style="overflow-y: auto; height: 85%; max-height:600px;">
+
+        <ul class="metismenu" id="menu">
+            
+                        <li ><a href="https://weixine.ustc.edu.cn/2020/home">
+                    <span class="iconfont icon-home"></span>
+                    <span class="sidebar-nav-item">每日打卡</span>
+                </a>
+            </li>
+            
+                        
+                        <!-- 返校申请 -->
+                            <li >
+                    <a href="https://weixine.ustc.edu.cn/2020/apply/daliy">
+                        <span class="iconfont icon-infor"></span>
+                        <span class="sidebar-nav-item">申请报备</span>
+                    </a>
+                </li>
+                <li class="mm-active"><a href="https://weixine.ustc.edu.cn/2020/apply_total">
+                        <span class="iconfont icon-infor"></span>
+                        <span class="sidebar-nav-item">申报记录</span>
+                    </a>
+                </li>
+
+                <li ><a href="https://weixine.ustc.edu.cn/2020/upload/xcm">
+                        <span class="iconfont icon-infor"></span>
+                        <span class="sidebar-nav-item">健康信息上传</span>
+                    </a>
+                </li>
+
+                <li ><a href="https://weixine.ustc.edu.cn/2020/help">
+                        <span class="iconfont icon-mail"></span>
+                        <span class="sidebar-nav-item">操作指南</span>
+                    </a>
+                </li>
+                <li ><a href="https://weixine.ustc.edu.cn/2020/other_competition">
+                        <span class="iconfont icon-infor"></span>
+                        <span class="sidebar-nav-item">国庆有奖答题</span>
+                    </a>
+                </li>
+                            
+        </ul>
+    </nav>
+
+
+</div>
+<div id="wrapper">
+    <div class="header">
+        <ul class="nav navbar-nav pull-left">
+            <li class="nav-menu">
+                <img src="https://weixine.ustc.edu.cn/2020/html/img/menu.png" width="32">
+                            </li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+                        <li>
+                                    <span><i class="fa fa-user-circle"></i> 徐亦昶</span>
+                    <a href="https://weixine.ustc.edu.cn/2020/rcaslogout" class="logout">退出</a>
+
+                            </li>
+        </ul>
+
+
+    </div>
+        <div class="page-wrap">
+        <div class="flash-message mgb10 pd020" >
+            <input type="hidden" name="_token" value="JA95xKM6qG1LBobhUa51tNqhq7M6Y6aSPrIiuKrY">
+                                                                                                                                    </div>
+        <div class="panel" id="table-box">
+            <div class="apply-list-contaniner">
+                <p style="padding: 0 10px;">请选择申请类型</p>
+                <ul class="apply-list clearfix">
+                    <li class="col-xs-6 col-lg-2 col-md-2"><a href="javascript:void(0)" class="btn btn-primary active" id="cross-apply">进出校报备记录</a></li>
+                    <li class="col-xs-6 col-lg-2 col-md-2"><a href="javascript:void(0)" class="btn btn-primary" id="stayinout-apply">进出校申请记录</a></li>
+                    <li class="col-xs-6 col-lg-2 col-md-2"><a href="javascript:void(0)" class="btn btn-primary" id="appointment-apply">返校申请记录</a></li>
+                    <li class="col-xs-6 col-lg-2 col-md-2"><a href="javascript:void(0)" class="btn btn-primary" id="inout-application-apply">离校申请记录</a></li>
+                    
+                    <li class="col-xs-6 col-lg-2 col-md-2"><a href="javascript:void(0)" class="btn btn-primary" id="special-apply">特殊申请记录</a></li>
+                </ul>
+            </div>
+            <p style="margin: 5px -10px 0;">当前时间：
+                <strong class="text-danger" style="font-size: 20px;"><span id="date_Y">2022</span>-<span id="date_m">10</span>-<span id="date_d">08</span> <span id="date_H">12</span>:<span id="date_i">42</span>:<span id="date_s">45</span></strong>
+            </p>
+            <p style="margin: 5px -10px 0;">你的当前状态：<strong class="" style="font-size:20px;">在校可进出校</strong>，<span class="text-danger">状态有误？</span>请前往<a class="can-apply" href="https://weixine.ustc.edu.cn/2020/special_apply">特殊申请记录</a></p>
+            
+
+            
+            <div id="apply-box" style="margin-left: -10px; margin-right: -10px;">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th colspan="3">进出校申请</th>
+                    </tr>
+                    <tr>
+                        <th>进出校时间段</th>
+                        <th style="width: 70px;">状态</th>
+                        <th style="min-width: 100px;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                                    <tr>
+                                <td class="fakeDate"></td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/249733/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-10-08 10:00:50~2022-10-08 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/249731/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-10-02 13:13:53~2022-10-02 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/234962/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-10-01 09:02:04~2022-10-01 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/234675/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-30 00:00:00~2022-09-30 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/234354/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-29 11:43:39~2022-09-29 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/234353/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-28 10:04:51~2022-09-28 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/234198/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-27 10:21:47~2022-09-27 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/234041/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-26 13:57:26~2022-09-26 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/233934/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-09 00:00:00~2022-09-09 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/218255/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-08 00:17:54~2022-09-08 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/205475/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-07 00:00:00~2022-09-07 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/182229/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-06 00:16:07~2022-09-06 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/182224/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-05 00:00:00~2022-09-05 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/164260/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-04 15:43:19~2022-09-04 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/164256/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-04 00:00:00~2022-09-04 23:59:59</td>
+                                <td><nobr><span class="">已失效</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/154420/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-03 14:37:27~2022-09-03 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/153433/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-03 00:00:00~2022-09-03 23:59:59</td>
+                                <td><nobr><span class="">已失效</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/144173/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-02 11:37:27~2022-09-02 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/144169/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                                    <tr>
+                                <td>2022-09-01 14:10:23~2022-09-01 23:59:59</td>
+                                <td><nobr><span class="text-success">审核通过</span></nobr></td>
+                                <td>
+                                    <a href="https://weixine.ustc.edu.cn/2020/stayinout_apply/136269/show" class="text-primary icon-link"><i class="iconfont icon-search">详情</i></a>
+                                                    </td>
+                            </tr>
+                            </tbody>
+                </table>                            </div>
+        </div>
+        <div class="footer">
+    中国科大健康打卡平台使用问题请联系mplat@ustc.edu.cn<br>或致电63603024找黄老师，节假日请致电18130043746<br/>
+    门禁刷卡问题请咨询保卫处
+</div>    </div>
+
+</div>
+
+
+<script>
+    lang = 'zh_cn';
+    if(lang == 'en'){
+        language = 'en';
+    }else{
+        language = 'zh-CN';
+    }
+</script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/metisMenu.min.js" ></script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/bootstrap-select.min.js" ></script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/3rd/layer/layer.js" ></script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/main.js" ></script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/bootoast.js" ></script>
+    <script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/bootstrap-datetimepicker.min.js" ></script>
+    <script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/bootstrap-datetimepicker.zh-CN.js" ></script>
+    <script type="text/javascript">
+        function GetRTime() {
+            var nY = document.getElementById("date_Y").innerHTML;
+            var nm = document.getElementById("date_m").innerHTML;
+            var nd = document.getElementById("date_d").innerHTML;
+            var nH = document.getElementById("date_H").innerHTML;
+            var ni = document.getElementById("date_i").innerHTML;
+            var ns = document.getElementById("date_s").innerHTML;
+
+            ns = parseInt(ns)+1;
+            if(ns == 60){
+                ns = '00';
+                ni = parseInt(ni)+1;
+            }
+            if(ni == 60){
+                ni = '00';
+                nH = parseInt(nH)+1;
+            }
+            if(nH == 24){
+                nH = '00';
+                nd = parseInt(nd)+1;
+            }
+            if(nm == 1 || nm == 3 || nm == 5 || nm == 7 || nm == 8 || nm == 10 || nm == 12){
+                var maxd = 31;
+            }else if(nm == 4 || nm == 6 || nm == 9 || nm == 11){
+                var maxd = 30;
+            }else{
+                if(nY%4 == 0){
+                    var maxd = 29;
+                }else{
+                    var maxd = 28;
+                }
+            }
+            if(nd > maxd){
+                nd = '01';
+                nm = parseInt(nm)+1;
+            }
+            if(nm > 12){
+                nm = '01';
+                nY = parseInt(nY)+1;
+            }
+
+            nm = parseInt(nm) < 10 ? '0'+parseInt(nm) : nm;
+            nd = parseInt(nd) < 10 ? '0'+parseInt(nd) : nd;
+            nH = parseInt(nH) < 10 ? '0'+parseInt(nH) : nH;
+            ni = parseInt(ni) < 10 ? '0'+parseInt(ni) : ni;
+            ns = parseInt(ns) < 10 ? '0'+parseInt(ns) : ns;
+
+            document.getElementById("date_Y").innerHTML = nY;
+            document.getElementById("date_m").innerHTML = nm;
+            document.getElementById("date_d").innerHTML = nd;
+            document.getElementById("date_H").innerHTML = nH;
+            document.getElementById("date_i").innerHTML = ni;
+            document.getElementById("date_s").innerHTML = ns;
+            setTimeout("GetRTime()", 1000);
+        }
+        onload = function() {
+            GetRTime();
+        }
+    </script>
+    <script>
+        $(function () {
+            $('#cross-apply').click(function () {
+                var _this = $(this);
+                var url = 'https://weixine.ustc.edu.cn/2020/apply_total_daliy';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: {},
+                    dataType: 'html',
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    },
+                    success: function(res){
+                        $('#apply-box').html(res);
+                        $('.apply-list .btn-primary').removeClass('active');
+                        _this.addClass('active');
+                    }
+                });
+            });
+
+            $('#special-apply').click(function () {
+                var _this = $(this);
+                var url = 'https://weixine.ustc.edu.cn/2020/apply_total_special';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: {},
+                    dataType: 'html',
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    },
+                    success: function(res){
+                        $('#apply-box').html(res);
+                        $('.apply-list .btn-primary').removeClass('active');
+                        _this.addClass('active');
+                    }
+                });
+            });
+
+            $('#inout-application-apply').click(function () {
+                var _this = $(this);
+                var url = 'https://weixine.ustc.edu.cn/2020/apply_total_inout';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: {},
+                    dataType: 'html',
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    },
+                    success: function(res){
+                        $('#apply-box').html(res);
+                        $('.apply-list .btn-primary').removeClass('active');
+                        _this.addClass('active');
+                    }
+                });
+            });
+
+            $('#stay-apply').click(function () {
+                var _this = $(this);
+                var url = 'https://weixine.ustc.edu.cn/2020/apply_total_stay';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: {},
+                    dataType: 'html',
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    },
+                    success: function(res){
+                        $('#apply-box').html(res);
+                        $('.apply-list .btn-primary').removeClass('active');
+                        _this.addClass('active');
+                    }
+                });
+            });
+
+            $('#appointment-apply').click(function () {
+                var _this = $(this);
+                var url = 'https://weixine.ustc.edu.cn/2020/apply_total_appointment';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: {},
+                    dataType: 'html',
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    },
+                    success: function(res){
+                        $('#apply-box').html(res);
+                        $('.apply-list .btn-primary').removeClass('active');
+                        _this.addClass('active');
+                    }
+                });
+            })
+
+            $('#stayinout-apply').click(function () {
+                var _this = $(this);
+                var url = 'https://weixine.ustc.edu.cn/2020/apply_total_stayinout';
+                $.ajax({
+                    type: 'GET',
+                    url: url,
+                    data: {},
+                    dataType: 'html',
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    },
+                    success: function(res){
+                        $('#apply-box').html(res);
+                        $('.apply-list .btn-primary').removeClass('active');
+                        _this.addClass('active');
+                    }
+                });
+            });
+
+            $('body').on('click','.application-delete', function () {
+                var _this = $(this);
+                var id = $(this).data('id');
+                var url = $(this).data('url');
+                var rel = $(this).attr('rel');
+                if(url){
+                    layer.confirm('撤销的申请无法恢复， 确认撤销吗？',{title: '提示'}, function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: {id:id},
+                            dataType: 'json',
+                            headers: {
+                                'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                            },
+                            success: function(res){
+                                layer.alert(res.message);
+                                if(res.status){
+                                    if(rel == 'appointment'){
+                                        $('#appointment-apply').trigger('click');
+                                    }else{
+                                        _this.parents('tr').remove();
+                                    }
+
+                                }
+                            }
+                        });
+                    });
+                }
+            })
+        });
+    </script>
+<script>
+    var date=new Date();
+    var month=(date.getMonth()+1).toString();
+    var day=date.getDate().toString();
+    if(month.length==1) month='0'+month;
+    if(day.length==1) day='0'+day;
+    document.getElementsByClassName("fakeDate")[0].innerHTML=date.getFullYear()+'-'+month+'-'+day
+    +' 08:23:50~'+date.getFullYear()+'-'+month+'-'+day+' 23:59:59';
+    </script>
+</body>
+</html>
