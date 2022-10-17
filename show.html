@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>中国科大健康打卡平台</title>
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/metisMenu.min.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/fonts/iconfont.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/main.css?t" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/bootoast.css" />
+    <link rel="shortcut icon" href="/2020/favicon.ico" />
+        <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/frontend.css?t=1665997765" />
+    <link rel="stylesheet" href="https://weixine.ustc.edu.cn/2020/html/css/appointment.css?t=1665997765" />
+    <link rel="stylesheet" type="text/css" href="https://weixine.ustc.edu.cn/2020/html/js/3rd/webuploader/webuploader.css?t=1665997765">
+    <style>
+        .datetimepicker{
+            padding: 6px 12px;}
+    </style>
+    <style>
+        .pagination{width: 100%;text-align: center;margin: 0;}
+        .pagination li{display: inline-block; height: 30px;line-height: 30px;margin: 0 2px;}
+        .pagination li a,.pagination li .more{min-width: 30px;height: 30px;border-radius: 3px;display: block; text-align: center;line-height: 20px;background: #fff;border: #ddd solid 1px;}
+        .pagination li input{width: 50px;height: 30px;border:#ddd solid 1px;border-radius: 3px;padding: 0 5px;margin: 0 5px;}
+        .pagination li a:hover,.pagination li a.act{background: #677bad;color: #fff;border: #677bad solid 1px;text-decoration: none;}
+        .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+            z-index: 3;
+            color: #fff;
+            cursor: default;
+            background-color: #677bad;
+            border-color: #677bad;
+            height: 30px;
+            border-radius: 3px;
+        }
+        .pagination>.disabled>a, .pagination>.disabled>a:focus, .pagination>.disabled>a:hover, .pagination>.disabled>span, .pagination>.disabled>span:focus, .pagination>.disabled>span:hover {
+            z-index: 3;
+            color: #444;
+            cursor: default;
+            background-color: #f0f0f0;
+            border-color: #ccc;
+            height: 30px;
+            border-radius: 3px;
+        }
+        .footer{
+            background: #fff;
+            text-align: center;
+            padding: 10px 0;
+            color: #999;
+            border-top:  1px solid #f5f5f5;
+        }
+        .point{
+            width: 1.0rem;
+            height: 1.0rem;
+            border: 0.01rem solid #FD3509;
+            position: absolute;
+            left: 2.5rem;
+            top: 0.8rem;
+            background: #FD3509;
+            border-radius: 50%;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="menu-hide">
+
+<div id="sidebar">
+    <div class="logo">
+        <a href="#"><img src="https://weixine.ustc.edu.cn/2020/html/img/logo.png"></a>
+        <a href="#" class="menu-close"><i class="fa fa-close"></i></a>
+    </div>
+    <nav class="sidebar-nav" style="overflow-y: auto; height: 85%; max-height:600px;">
+
+        <ul class="metismenu" id="menu">
+            
+                        <li ><a href="https://weixine.ustc.edu.cn/2020/home">
+                    <span class="iconfont icon-home"></span>
+                    <span class="sidebar-nav-item">每日打卡</span>
+                </a>
+            </li>
+            
+                        
+                        <!-- 返校申请 -->
+                            <li >
+                    <a href="https://weixine.ustc.edu.cn/2020/apply/daliy">
+                        <span class="iconfont icon-infor"></span>
+                        <span class="sidebar-nav-item">申请报备</span>
+                    </a>
+                </li>
+                <li class="mm-active"><a href="https://weixine.ustc.edu.cn/2020/apply_total">
+                        <span class="iconfont icon-infor"></span>
+                        <span class="sidebar-nav-item">申报记录</span>
+                    </a>
+                </li>
+
+                <li ><a href="https://weixine.ustc.edu.cn/2020/upload/xcm">
+                        <span class="iconfont icon-infor"></span>
+                        <span class="sidebar-nav-item">健康信息上传</span>
+                    </a>
+                </li>
+
+                <li ><a href="https://weixine.ustc.edu.cn/2020/help">
+                        <span class="iconfont icon-mail"></span>
+                        <span class="sidebar-nav-item">操作指南</span>
+                    </a>
+                </li>
+                <li ><a href="https://weixine.ustc.edu.cn/2020/help/danger-area">
+                        <span class="iconfont icon-mail"></span>
+                        <span class="sidebar-nav-item">疫情风险地区提示单</span>
+                    </a>
+                </li>
+                <li ><a href="https://weixine.ustc.edu.cn/2020/other_competition">
+                        <span class="iconfont icon-infor"></span>
+                        <span class="sidebar-nav-item">国庆有奖答题</span>
+                    </a>
+                </li>
+                            
+        </ul>
+    </nav>
+
+
+</div>
+<div id="wrapper">
+    <div class="header">
+        <ul class="nav navbar-nav pull-left">
+            <li class="nav-menu">
+                <img src="https://weixine.ustc.edu.cn/2020/html/img/menu.png" width="32">
+                            </li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+                        <li>
+                                    <span><i class="fa fa-user-circle"></i> 徐亦昶</span>
+                    <a href="https://weixine.ustc.edu.cn/2020/rcaslogout" class="logout">退出</a>
+
+                            </li>
+        </ul>
+
+
+    </div>
+        <div class="page-wrap">
+        <div class="flash-message mgb10 pd020" >
+                                                                                                                                    </div>
+
+        <div class="panel" style="max-width: 800px; margin: 0 auto;">
+
+            <div id="daliy-report" class="content-div clearfix">
+                <form action="https://weixine.ustc.edu.cn/2020/inout_apply" method="post">
+                    <input type="hidden" name="_token" value="exmMwTykWIAqjvKahVIfI8dBeIpIsRORh71TA7Id">
+                    <div class="daliy-report-form form-horizontal" style="margin-bottom: 50px;">
+                        <div class="form-group">
+                                                            <h5>审核状态：<span class="text-success">审核通过</span></h5>
+                                                                                                                                            </div>
+
+                        <div class="form-group">
+                            <div style="float: left; width: 48%">
+                                <h5>姓名：</h5>
+                                <input type="text" name="name" disabled class="form-control" value="徐亦昶"/>
+                            </div>
+                            <div style="float: right; width: 48%">
+                                <h5>学号：</h5>
+                                <input type="text" name="zjhm" disabled class="form-control" value="PB20000156"/>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div style="float: left; width: 48%">
+                                <h5>现居地：</h5>
+                                <input type="text" disabled class="form-control" value="中校区"/>
+                            </div>
+                            <div style="float: right; width: 48%">
+                                <h5>出发地：</h5>
+                                <input type="text" disabled class="form-control" value="中校区-4-302"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h5>进出校原因：</h5>
+                            <input type="text" class="form-control" disabled autocomplete="off" value="前往东西南北中校区">
+                        </div>
+                        <div class="form-group">
+                            <h5>进出校时间段：</h5>
+                            <input type="text" class="form-control" disabled autocomplete="off" id="fake" value="">
+                        </div>
+                        <div class="form-group">
+                            <h5>具体原因：</h5>
+                            <textarea class="form-control" disabled rows="5">上课</textarea>
+                        </div>
+                        <div class="form-group">
+                            <h5>目的地校区：</h5>
+                            <input type="text" class="form-control" disabled autocomplete="off" value="西校区，中校区">
+                        </div>
+                        
+                                                    <div class="form-group">
+                                <h5>大数据行程卡：</h5>
+                                                                                                            <div id="WU_FILE_xck" class="file-item thumbnail">
+                                            <img style="max-width: 240px;" src="https://weixine.ustc.edu.cn/2020img/storage/upload/20221016/00/0aaff34745c1f513130de961a8d1ab13.jpg">
+                                        </div>
+                                                                                                </div>
+                            <div class="form-group">
+                                <h5>安康码：</h5>
+                                                                                                            <h4 class="text-success">安康码经系统确认为绿码</h4>
+                                                                                                </div>
+                            
+                            <div class="form-group">
+                                <h5>上周至今范围内核酸检测证明：</h5>
+                                                                                                            <h4 class="text-success">系统已确认</h4>
+                                    
+                                                            </div>
+                                                            <div class="form-group">
+                                    <h5>上周至今范围内第二张核酸检测证明：</h5>
+                                                                                                                        <h4 class="text-success">系统已确认</h4>
+                                                                                                            </div>
+                                                                                                        
+                        <div class="form-group clearfix">
+                            <hr>
+                            <a href="https://weixine.ustc.edu.cn/2020/apply_total?t=t" id="report-submit-btn" class="btn btn-primary" >返回</a>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div class="footer">
+    中国科大健康打卡平台使用问题请联系mplat@ustc.edu.cn<br>或致电63603024找黄老师，节假日请致电18130043746<br/>
+    门禁刷卡问题请咨询保卫处
+</div>    </div>
+
+</div>
+
+
+<script>
+    lang = 'zh_cn';
+    if(lang == 'en'){
+        language = 'en';
+    }else{
+        language = 'zh-CN';
+    }
+</script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/jquery.min.js"></script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/metisMenu.min.js" ></script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/bootstrap-select.min.js" ></script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/3rd/layer/layer.js" ></script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/main.js" ></script>
+<script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/bootoast.js" ></script>
+    <script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/bootstrap-datetimepicker.min.js" ></script>
+    <script type="text/javascript" src="https://weixine.ustc.edu.cn/2020/html/js/bootstrap-datetimepicker.zh-CN.js" ></script>
+    <script>
+        $(function () {
+            var pk1 = $('#out_date').datetimepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                minView: 2,
+                autoclose: 2,
+                startDate: new Date()
+            });
+
+            var pk2 = $('#in_date').datetimepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                minView: 2,
+                autoclose: 2,
+                startDate: new Date()
+            });
+
+            pk1.on('changeDate', function (e) {
+                $('#in_date').datetimepicker('setStartDate',e.date);
+            });
+
+                            $(".datetimepicker").click(function(){
+                document.activeElement.blur();
+            })
+            
+            //防止重复提交
+            $('#report-submit-btn').click(function () {
+                var _this = $(this);
+                _this.button('loading');
+
+                setTimeout(function () {
+                    _this.button('reset');
+                }, 10000)
+            });
+        });
+    </script>
+<script>
+    var date=new Date();
+    var month=(date.getMonth()+1).toString();
+    var day=date.getDate().toString();
+    var hour=date.getHours().toString();
+    var minute=date.getMinutes().toString();
+    var second=date.getSeconds().toString();
+    if(month.length==1) month='0'+month;
+    if(day.length==1) day='0'+day;
+    if(hour.length==1) hour='0'+hour;
+    if(minute.length==1) minute='0'+minute;
+    if(second.length==1) second='0'+second;
+    document.getElementById("fake").setAttribute('value',date.getFullYear()+'-'+month+'-'+day
+    +' 00:00:00~'+date.getFullYear()+'-'+month+'-'+day+' 23:59:59');
+    </script>
+</body>
+</html>
